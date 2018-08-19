@@ -1,0 +1,7 @@
+{
+  "name": "controle-glicemia",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
