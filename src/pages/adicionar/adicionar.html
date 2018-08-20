@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>adicionar</ion-title>
+    <ion-title text-center><span class="titulo">Registrar</span></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,18 +23,30 @@
 	   	<ion-icon name="{{ico.icoInjecao}}"></ion-icon>
 	</button>
 
-	<div id="add-medicao">
+	<div id="add-medicao" class="form" *ngIf="show.mostraMedicao">
 		<ion-item>
-    		<ion-label><ion-icon name="add"></ion-icon></ion-label>
-			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.resultado"></ion-input>
+    		<ion-label stacked>
+    			<span class="medicao-form-input">Resultado</span>
+    			<ion-icon name="flask"></ion-icon>
+    		</ion-label>
+    		<ion-icon name="clock"></ion-icon>
+			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.resultado" required></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label stacked>Data</ion-label>
-			<ion-input type="date" [(ngModel)]="medicao.data"></ion-input>
+			<ion-label stacked>
+			<span class="medicao-form-input">
+				<span class="medicao-form-input">Data</span>
+				<ion-icon name="calendar"></ion-icon>
+			</span>
+				</ion-label>
+			<ion-input type="date" [(ngModel)]="medicao.data" required></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label><ion-icon name="clock"></ion-icon></ion-label>
-			<ion-select [(ngModel)]="medicao.turno" placeholder="Turno da medição">
+			<ion-label stacked>
+				<span class="medicao-form-input">Turno</span>
+				<ion-icon name="clock"></ion-icon>
+			</ion-label>
+			<ion-select [(ngModel)]="medicao.turno" placeholder="Turno da medição" required>
       			<ion-option value="1">Manhã</ion-option>
       			<ion-option value="2">Tarde</ion-option>
       			<ion-option value="3">Noite</ion-option>
@@ -48,7 +60,7 @@
 			<ion-input type="number" placeholder="Horário..." [(ngModel)]="medicao.resultado"></ion-input>
 		</ion-item> -->
 	</div>
-	<div id="add-injecao">
+	<div id="add-injecao" *ngIf="show.mostraInjecao">
 		<ion-item>
     		<ion-label stacked>Quantidade</ion-label>
 		<ion-input type="number" placeholder="Quantidade de insulina injetada..." [(ngModel)]="injecao.quantidade"></ion-input>

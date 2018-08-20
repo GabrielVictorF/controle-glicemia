@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>medicoes</ion-title>
+    <ion-title><span class="titulo">Medições</span></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -30,9 +30,9 @@
       Medições do dia
     </div>
 		<ion-item *ngFor="let x of data">
-			{{ x.resultado }}
+			{{ x.resultado }} mg/dl
       <ion-note item-end>{{x.turno | turno}}</ion-note>
 		</ion-item>
 	</ion-list>
-  <ion-item *ngIf="tipo == 1" text-center>Média do dia: {{media}}</ion-item>
+  <ion-item *ngIf="tipo == 1" text-center>Média do dia: {{media}} mg/dl</ion-item>
 </ion-content>

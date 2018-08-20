@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastController, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the FunctionsProvider provider.
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FunctionsProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     console.log('Hello FunctionsProvider Provider');
   }
 
@@ -49,5 +50,26 @@ export class FunctionsProvider {
     else
       var dataFormatada = ano + "-" + mes + "-" + dia;
     return dataFormatada;
+  }
+
+  public showToast(message: string) {
+      const toast = this.toastCtrl.create({
+        message: message,
+        duration: 2000,
+        showCloseButton: true,
+        closeButtonText: 'OK'
+      });
+      toast.present();
+  }
+
+  public showAlert(title: string, message: string) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      message: message,
+      buttons: [{
+        text: 'OK'
+      }]
+    });
+    alert.present();
   }
 }

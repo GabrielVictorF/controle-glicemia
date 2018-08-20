@@ -22,6 +22,10 @@ export class AdicionarPage {
 		icoMedicao: 'arrow-dropdown',
 		icoInjecao: 'arrow-dropdown'
 	}
+  private show = {
+    mostraMedicao: false,
+    mostraInjecao: false
+  }
 	private medicao = {
 		resultado: '',
 		data: this.dataHoje,
@@ -40,11 +44,13 @@ export class AdicionarPage {
   }
   private mostra(ico) {
   	if (ico == 'medicao') {
+      this.show.mostraMedicao = true;
   		if (this.ico.icoMedicao == 'arrow-dropdown')
   			this.ico.icoMedicao = 'arrow-dropup';
   		else 
   			this.ico.icoMedicao = 'arrow-dropdown';
   	} else {
+      this.show.mostraInjecao = true;
   		if (this.ico.icoInjecao == 'arrow-dropdown')
   			this.ico.icoInjecao = 'arrow-dropup';
   		else 
@@ -54,9 +60,14 @@ export class AdicionarPage {
 
   private adicionar() {
     console.log(this.medicao);
-  	 // this.medicao.data = this.functions.dataToEpoch(this.medicao.data);
-    this.api.postMedicao(this.medicao).subscribe(res => {
-      console.log(res);
-    })
-  }
+    if (this.medicao.data == '' || this.medicao.resultado == '' || this.medicao.turno == '')
+      this.functions.showToast('Preencha todos os campos primeiro');
+    else {
+      this.api.postMedicao(this.medicao).subscribe(res => {
+        this.functions.showToast('Medição adicionada com sucesso!');
+      },
+      Error => {
+          this.functions.showToast('Erro ao adicionar medição, código: ' + Error.error.code);
+      });
+  } }
 }
