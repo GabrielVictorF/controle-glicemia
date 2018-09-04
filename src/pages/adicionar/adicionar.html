@@ -26,11 +26,19 @@
 	<div id="add-medicao" class="form" *ngIf="show.mostraMedicao">
 		<ion-item>
     		<ion-label stacked>
-    			<span class="medicao-form-input">Antes</span>
+    			<span class="medicao-form-input">Nível de açúcar antes da injeção</span>
     			<ion-icon name="flask"></ion-icon>
     		</ion-label>
     		<ion-icon name="clock"></ion-icon>
 			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_antes" required></ion-input>
+		</ion-item>
+    <ion-item>
+    		<ion-label stacked>
+    			<span class="medicao-form-input">Nível de açúcar depois da injeção</span>
+    			<ion-icon name="beaker"></ion-icon>
+    		</ion-label>
+    		<ion-icon name="clock"></ion-icon>
+			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_depois"></ion-input>
 		</ion-item>
     	<ion-item>
     		<ion-label stacked>

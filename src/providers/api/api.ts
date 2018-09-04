@@ -23,7 +23,8 @@ export class ApiProvider {
 	}
 
   public getMedicoes(): any {
-  	const url = this.REST_API + "/data/medicoes";
+    const filtro = "?sortBy=created%20desc";
+  	const url = this.REST_API + "/data/medicoes" + filtro;
   	return this.http.get<Medicoes>(url);
   }
 
@@ -35,12 +36,41 @@ export class ApiProvider {
       })
     });
     let body = {
-      resultado_antes: parseInt(medicao.resultado),
+      resultado_antes: parseInt(medicao.res_antes),
+      resultado_depois: parseInt(medicao.res_depois),
       quantidade_insulina: parseInt(medicao.quantidade),
       data: medicao.data,
       turno: parseInt(medicao.turno)
     }
     return this.http.post(url, body, httpOptions);
+  }
+
+  public putMedicao(medicao): any {
+    const objectId = medicao.objectId;
+    const url = this.REST_API + "/data/medicoes/" + objectId;
+    const httpOptions = ({
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+    let body = {
+      resultado_antes: parseInt(medicao.resultado_antes),
+      resultado_depois: parseInt(medicao.resultado_depois),
+      quantidade_insulina: parseInt(medicao.quantidade_insulina),
+      data: medicao.data,
+      turno: parseInt(medicao.turno)
+    }
+    return this.http.put(url, body, httpOptions);
+  }
+
+  public deleteMedicao(objectId): any {
+    const url = this.REST_API + "/data/medicoes/" + objectId;
+    const httpOptions = ({
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+    return this.http.delete(url, httpOptions);
   }
 
   public getPesquisa(termo): any {

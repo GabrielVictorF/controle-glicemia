@@ -28,6 +28,7 @@ export class AdicionarPage {
   }
 	private medicao = {
 		res_antes: 1,
+    res_depois: 2,
     quantidade: 1,
 		data: this.dataHoje,
     turno: 2
@@ -64,8 +65,10 @@ export class AdicionarPage {
     // if (this.medicao.data == '' || this.medicao.resultado == '' || this.medicao.turno == '')
     //   this.functions.showToast('Preencha todos os campos primeiro');
     // else {
-      this.medicao.data = this.functions.dataToEpoch(this.medicao.data);
+      this.medicao.data = this.functions.toEpoch();
       this.api.postMedicao(this.medicao).subscribe(res => {
+        console.log(res);
+        localStorage.setItem("alterMedicoes", true);
         this.functions.showToast('Medição adicionada com sucesso!');
       },
       Error => {

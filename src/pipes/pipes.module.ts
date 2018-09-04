@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { TurnoPipe } from './turno/turno';
+import { DataPipe } from './data/data';
+
 @NgModule({
-	declarations: [TurnoPipe],
+	declarations: [TurnoPipe, DataPipe],
 	imports: [],
-	exports: [TurnoPipe]
+	exports: [TurnoPipe, DataPipe]
 })
 export class PipesModule {}

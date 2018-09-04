@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="edita()" color="primary">
+         <ion-icon name="create"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="deleta()" color="danger">
+         <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Detalhe do item</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <b>Resultado anterior: </b>{{ item.resultado_antes }} 
+  </ion-item>
+  <ion-item>
+    <b>Resultado posterior: </b>{{ item.resultado_depois }} 
+  </ion-item>
+  <ion-item>
+    <b>Data: </b>{{ item.data | data }}
+  </ion-item>
+  <ion-item>
+    <b>Quantidade de insulina injetada: </b>{{ item.quantidade_insulina }} mg/dl
+  </ion-item>
+  <ion-item>
+    <b>Turno da injeção: </b>{{ item.turno | turno }}
+  </ion-item>
+</ion-content>

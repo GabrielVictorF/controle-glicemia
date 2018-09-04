@@ -6,6 +6,8 @@ import { FunctionsProvider } from '../../providers/functions/functions';
 
 import { Medicoes } from '../../models/medicoes';
 
+import { DetalhePage } from '../detalhe/detalhe';
+
 /**
  * Generated class for the MedicoesPage page.
  *
@@ -22,11 +24,18 @@ export class MedicoesPage {
 	private data: Medicoes;
   private tipo: number;
   private media: number;
+  private escolha = 0;
+  private alteracao;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private api: ApiProvider,
     public functions: FunctionsProvider) {
+      this.alteracao = localStorage.getItem('alterMedicoes');
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
+    console.log(localStorage.getItem("delete"));
+    if (this.escolha == 1 && this.alteracao)
+      this.getAllMedicoes();
     console.log('ionViewDidLoad MedicoesPage');
   }
 
@@ -35,6 +44,18 @@ export class MedicoesPage {
   		this.data = res;
   		console.log(this.data);
   	});
+  }
+
+  public getAllMedicoes() {
+    console.log("GET ALL MEDICOES");
+    this.escolha = 1;
+    this.api.getMedicoes().subscribe(res => {
+      this.data = res;
+    });
+  }
+
+  public detalheItem(item) {
+    this.navCtrl.push(DetalhePage, {'itemSelecionado': item});
   }
 
   getItems(ev: any) {

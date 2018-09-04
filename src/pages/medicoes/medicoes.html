@@ -24,13 +24,16 @@
    <button ion-button full >
     Mostrar medições desse mês
   </button>
+  <button ion-button full (click)="getAllMedicoes()">
+    Mostrar todas as medições
+  </button>
 	<ion-list>
     <p>
     <div *ngIf="tipo == 1" class="alert alert-primary" role="alert" text-center>
       Medições do dia
     </div>
-		<ion-item *ngFor="let x of data">
-			{{ x.resultado }} mg/dl
+		<ion-item *ngFor="let x of data" (click)="detalheItem(x)">
+			{{ x.data | data }}
       <ion-note item-end>{{x.turno | turno}}</ion-note>
 		</ion-item>
 	</ion-list>
