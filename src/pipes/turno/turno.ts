@@ -14,11 +14,11 @@ export class TurnoPipe implements PipeTransform {
    */
   transform(value: number) {
   	if (value == 1)
-  		return 'Manhã';
+  		return 'Café';
   	else if (value == 2)
-  		return 'Tarde';
+  		return 'Almoço';
   	else 
-  		return 'Noite';
+  		return 'Jantar / Noite';
     //return value.toLowerCase();
   }
 }

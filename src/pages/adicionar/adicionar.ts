@@ -17,7 +17,7 @@ import { ApiProvider } from '../../providers/api/api';
   templateUrl: 'adicionar.html',
 })
 export class AdicionarPage {
-  private dataHoje = this.functions.horaAgora();
+  private dataHoje = this.functions.dateToEpoch();
 	private ico = {
 		icoMedicao: 'arrow-dropdown',
 		icoInjecao: 'arrow-dropdown'
@@ -27,9 +27,10 @@ export class AdicionarPage {
     mostraInjecao: false
   }
 	private medicao = {
-		resultado: '',
+		res_antes: 1,
+    quantidade: 1,
 		data: this.dataHoje,
-    turno: ''
+    turno: 2
 	}
 	private injecao = {
 		quantidade: ''
@@ -60,14 +61,16 @@ export class AdicionarPage {
 
   private adicionar() {
     console.log(this.medicao);
-    if (this.medicao.data == '' || this.medicao.resultado == '' || this.medicao.turno == '')
-      this.functions.showToast('Preencha todos os campos primeiro');
-    else {
+    // if (this.medicao.data == '' || this.medicao.resultado == '' || this.medicao.turno == '')
+    //   this.functions.showToast('Preencha todos os campos primeiro');
+    // else {
+      this.medicao.data = this.functions.dataToEpoch(this.medicao.data);
       this.api.postMedicao(this.medicao).subscribe(res => {
         this.functions.showToast('Medição adicionada com sucesso!');
       },
       Error => {
           this.functions.showToast('Erro ao adicionar medição, código: ' + Error.error.code);
       });
-  } }
+  } 
+//}
 }

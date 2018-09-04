@@ -35,7 +35,8 @@ export class ApiProvider {
       })
     });
     let body = {
-      resultado: parseInt(medicao.resultado),
+      resultado_antes: parseInt(medicao.resultado),
+      quantidade_insulina: parseInt(medicao.quantidade),
       data: medicao.data,
       turno: parseInt(medicao.turno)
     }

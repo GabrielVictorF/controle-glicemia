@@ -42,13 +42,7 @@ export class FunctionsProvider {
 
   public horaAgora() {
     let data = new Date();
-    var ano = data.getFullYear();
-    var mes = data.getMonth() + 1;
-    var dia = data.getDate();
-    if (mes < 10)
-      var dataFormatada = ano + "-0" + mes + "-" + dia;
-    else
-      var dataFormatada = ano + "-" + mes + "-" + dia;
+    let dataFormatada = data.getTime
     return dataFormatada;
   }
 
@@ -71,5 +65,19 @@ export class FunctionsProvider {
       }]
     });
     alert.present();
+  }
+
+  public dateToEpoch() {
+    var todayTime = new Date();
+    var month = todayTime.getMonth() + 1;
+    var day = todayTime.getDate();
+    var year = todayTime.getFullYear() + 1;
+    if (month < 10) 
+      month = "0" + month;
+    if (day < 10)
+      day = "0" + day;
+    var dataFormatada =  year + "-" + month + "-" + day;
+    console.log(dataFormatada);
+    return dataFormatada;
   }
 }

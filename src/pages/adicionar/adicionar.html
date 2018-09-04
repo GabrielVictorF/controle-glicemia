@@ -26,11 +26,19 @@
 	<div id="add-medicao" class="form" *ngIf="show.mostraMedicao">
 		<ion-item>
     		<ion-label stacked>
-    			<span class="medicao-form-input">Resultado</span>
+    			<span class="medicao-form-input">Antes</span>
     			<ion-icon name="flask"></ion-icon>
     		</ion-label>
     		<ion-icon name="clock"></ion-icon>
-			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.resultado" required></ion-input>
+			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_antes" required></ion-input>
+		</ion-item>
+    	<ion-item>
+    		<ion-label stacked>
+    			<span class="medicao-form-input">Quantidade inserida de insulina</span>
+    			<ion-icon name="flash"></ion-icon>
+    		</ion-label>
+    		<ion-icon name="clock"></ion-icon>
+			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.quantidade" required></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label stacked>
@@ -47,9 +55,9 @@
 				<ion-icon name="clock"></ion-icon>
 			</ion-label>
 			<ion-select [(ngModel)]="medicao.turno" placeholder="Turno da medição" required>
-      			<ion-option value="1">Manhã</ion-option>
-      			<ion-option value="2">Tarde</ion-option>
-      			<ion-option value="3">Noite</ion-option>
+      			<ion-option value="1">Café</ion-option>
+      			<ion-option value="2">Almoço</ion-option>
+      			<ion-option value="3">Jantar / Noite</ion-option>
    			</ion-select>
 		</ion-item>
 		<ion-item>
