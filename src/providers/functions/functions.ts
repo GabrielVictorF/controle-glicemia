@@ -11,49 +11,40 @@ import { ToastController, AlertController } from 'ionic-angular';
 @Injectable()
 export class FunctionsProvider {
 
-  constructor(public http: HttpClient, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(public http: HttpClient, public toastCtrl: ToastController, 
+              public alertCtrl: AlertController) {
     console.log('Hello FunctionsProvider Provider');
   }
-
-  // public dataToEpoch(dataHuman) {
-  // 	let dataEpoch = {
-  // 		ano: '',
-  // 		mes : '',
-  // 		dia: '',
-  // 		hora: '',
-  // 		minuto: ''
-  // 	}
-  // 	dataEpoch.ano = dataHuman.substring(0,4);
-  // 	dataEpoch.mes = dataHuman.substring(5, 7);
-  // 	dataEpoch.dia = dataHuman.substring(8, 10);
-  // 	dataEpoch.hora = dataHuman.substring(11, 13);
-  // 	dataEpoch.minuto = dataHuman.substring(14, 16); 
-
-  //   parseInt(dataEpoch.mes);
-  //   dataEpoch.mes -= 1;
-  //   let data = new Date(dataEpoch.ano, dataEpoch.mes, dataEpoch.dia, dataEpoch.hora, dataEpoch.minuto);
-  //   data = data.getTime() / 1000.0;
-  //   console.log("Antes - " + data);
-  //   data.toString();
-  //   data += "000";
-  // 	console.log(data);
-  //   return data;
-  // }
-
-  public toEpoch() {
-    let date = new Date();
-    var dataNew = date.getTime();
-    return dataNew;
+  
+  public toEpoch(dataHuman?) {
+    console.log(dataHuman)
+    let data: any = {};
+    if (dataHuman) {
+      let date = new Date(dataHuman);
+        data.ano =  date.getFullYear(),
+        data.mes =  date.getMonth(),
+        data.dia =  date.getDate() + 1
+    }
+    else {
+      let date = new Date();
+      data.ano = date.getFullYear(),
+      data.mes = date.getMonth(),
+      data.dia =  date.getDate()
+    }
+    var dataNew = new Date(data.ano, data.mes, data.dia, 0, 0, 0);
+    var formatado = dataNew.getTime();
+    console.log(formatado);
+    return formatado;
   }
 
   public showToast(message: string) {
-      const toast = this.toastCtrl.create({
-        message: message,
-        duration: 2000,
-        showCloseButton: true,
-        closeButtonText: 'OK'
-      });
-      toast.present();
+    const toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      showCloseButton: true,
+      closeButtonText: 'OK'
+    });
+    toast.present();
   }
 
   public showAlert(title: string, message: string) {
@@ -69,6 +60,7 @@ export class FunctionsProvider {
 
   public dateToEpoch() { 
     let diaHoje = new Date();
+    console.log(diaHoje);
     let data: any = {
       month: diaHoje.getMonth() + 1,
       day: diaHoje.getDate(),

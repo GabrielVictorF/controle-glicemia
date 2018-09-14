@@ -13,6 +13,7 @@ export class DataPipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value) {
+    let hoje = new Date();
     if (value != null) {
       var dateVal ="/Date(" + value + ")/";
       var date = new Date( parseFloat( dateVal.substr(6 )));

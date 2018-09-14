@@ -14,39 +14,31 @@
 
 
 <ion-content padding>
-	<button ion-button full icon-right color="dark" data-toggle="collapse" href="#add-medicao" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="mostra('medicao')">
-    	Registrar medição de glicemia
-   		<ion-icon name="{{ico.icoMedicao}}"></ion-icon>
-	</button>
-  <button ion-button full icon-right color="primary" data-toggle="collapse" href="#add-injecao" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="mostra('injecao')">
-	    Registrar injeção de insulina
-	   	<ion-icon name="{{ico.icoInjecao}}"></ion-icon>
-	</button>
-
-	<div id="add-medicao" class="form" *ngIf="show.mostraMedicao">
+	<div id="add-medicao" class="form">
+    <ion-item text-center class="list-group-item-light"><h1>Registrar ocorrência</h1></ion-item>
 		<ion-item>
-    		<ion-label stacked>
-    			<span class="medicao-form-input">Nível de açúcar antes da injeção</span>
-    			<ion-icon name="flask"></ion-icon>
-    		</ion-label>
-    		<ion-icon name="clock"></ion-icon>
+    	<ion-label stacked>
+    		<span class="medicao-form-input">Nível de açúcar antes da injeção</span>
+    		<ion-icon name="flask"></ion-icon>
+    	</ion-label>
+    	<ion-icon name="clock"></ion-icon>
 			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_antes" required></ion-input>
 		</ion-item>
     <ion-item>
-    		<ion-label stacked>
-    			<span class="medicao-form-input">Nível de açúcar depois da injeção</span>
-    			<ion-icon name="beaker"></ion-icon>
-    		</ion-label>
-    		<ion-icon name="clock"></ion-icon>
+    	<ion-label stacked>
+    		<span class="medicao-form-input">Nível de açúcar depois da injeção</span>
+    		<ion-icon name="beaker"></ion-icon>
+    	</ion-label>
+    	<ion-icon name="clock"></ion-icon>
 			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_depois"></ion-input>
 		</ion-item>
-    	<ion-item>
-    		<ion-label stacked>
-    			<span class="medicao-form-input">Quantidade inserida de insulina</span>
-    			<ion-icon name="flash"></ion-icon>
-    		</ion-label>
-    		<ion-icon name="clock"></ion-icon>
-			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.quantidade" required></ion-input>
+    <ion-item>
+    	<ion-label stacked>
+    		<span class="medicao-form-input">Quantidade inserida de insulina</span>
+    		<ion-icon name="flash"></ion-icon>
+    </ion-label>
+    <ion-icon name="clock"></ion-icon>
+		<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.quantidade" required></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label stacked>
@@ -59,27 +51,19 @@
 		</ion-item>
 		<ion-item>
 			<ion-label stacked>
-				<span class="medicao-form-input">Turno</span>
+		    <span class="medicao-form-input">Turno</span>
 				<ion-icon name="clock"></ion-icon>
 			</ion-label>
 			<ion-select [(ngModel)]="medicao.turno" placeholder="Turno da medição" required>
-      			<ion-option value="1">Café</ion-option>
-      			<ion-option value="2">Almoço</ion-option>
-      			<ion-option value="3">Jantar / Noite</ion-option>
-   			</ion-select>
+      	<ion-option value="1">Café</ion-option>
+      	<ion-option value="2">Almoço</ion-option>
+      	<ion-option value="3">Jantar / Noite</ion-option>
+   		</ion-select>
 		</ion-item>
-		<ion-item>
-			<button ion-button full color="primary" (click)="adicionar()">Adicionar item</button>
-		</ion-item>	
-		<!-- <ion-item>
-			<ion-label stacked>Horário</ion-label>
-			<ion-input type="number" placeholder="Horário..." [(ngModel)]="medicao.resultado"></ion-input>
-		</ion-item> -->
-	</div>
-	<div id="add-injecao" *ngIf="show.mostraInjecao">
-		<ion-item>
-    		<ion-label stacked>Quantidade</ion-label>
-		<ion-input type="number" placeholder="Quantidade de insulina injetada..." [(ngModel)]="injecao.quantidade"></ion-input>
-	</ion-item>
+    <p>
+			<button ion-button full outline color="primary" icon-end (click)="adicionar()">
+        Adicionar registro
+        <ion-icon name="send"></ion-icon>
+      </button>
 	</div>
 </ion-content>

@@ -1,7 +1,5 @@
 {
-  "name": "controle-glicemia",
-  "integrations": {
-    "cordova": {}
-  },
+  "name": "project-glicemia",
+  "app_id": "",
   "type": "ionic-angular"
 }

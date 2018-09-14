@@ -18,23 +18,12 @@ import { ApiProvider } from '../../providers/api/api';
 })
 export class AdicionarPage {
   private dataHoje = this.functions.dateToEpoch();
-	private ico = {
-		icoMedicao: 'arrow-dropdown',
-		icoInjecao: 'arrow-dropdown'
-	}
-  private show = {
-    mostraMedicao: false,
-    mostraInjecao: false
-  }
 	private medicao = {
 		res_antes: 1,
     res_depois: 2,
     quantidade: 1,
 		data: this.dataHoje,
     turno: 2
-	}
-	private injecao = {
-		quantidade: ''
 	}
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
@@ -44,30 +33,16 @@ export class AdicionarPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdicionarPage');
   }
-  private mostra(ico) {
-  	if (ico == 'medicao') {
-      this.show.mostraMedicao = true;
-  		if (this.ico.icoMedicao == 'arrow-dropdown')
-  			this.ico.icoMedicao = 'arrow-dropup';
-  		else 
-  			this.ico.icoMedicao = 'arrow-dropdown';
-  	} else {
-      this.show.mostraInjecao = true;
-  		if (this.ico.icoInjecao == 'arrow-dropdown')
-  			this.ico.icoInjecao = 'arrow-dropup';
-  		else 
-  			this.ico.icoInjecao = 'arrow-dropdown';
-  	}
-  }
 
   private adicionar() {
     console.log(this.medicao);
     // if (this.medicao.data == '' || this.medicao.resultado == '' || this.medicao.turno == '')
     //   this.functions.showToast('Preencha todos os campos primeiro');
     // else {
-      this.medicao.data = this.functions.toEpoch();
+      this.medicao.data = this.functions.toEpoch(this.medicao.data);
       this.api.postMedicao(this.medicao).subscribe(res => {
         console.log(res);
+        this.medicao.data = this.dataHoje;
         localStorage.setItem("alterMedicoes", true);
         this.functions.showToast('Medição adicionada com sucesso!');
       },
