@@ -1,0 +1,69 @@
+<!--
+  Generated template for the AdicionarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center><span class="titulo">Registrar</span></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div id="add-medicao" class="form">
+    <ion-item text-center class="list-group-item-light "><h1 class="shadow-lg p-3 mb-5 bg-white rounded">Registrar ocorrência</h1></ion-item>
+		<ion-item>
+    	<ion-label stacked >
+    		<span class="medicao-form-input ">Nível de açúcar antes da injeção</span>
+    		<ion-icon name="flask"></ion-icon>
+    	</ion-label>
+    	<ion-icon name="clock"></ion-icon>
+			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_antes" required></ion-input>
+		</ion-item>
+    <ion-item>
+    	<ion-label stacked>
+    		<span class="medicao-form-input">Nível de açúcar depois da injeção</span>
+    		<ion-icon name="beaker"></ion-icon>
+    	</ion-label>
+    	<ion-icon name="clock"></ion-icon>
+			<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.res_depois"></ion-input>
+		</ion-item>
+    <ion-item>
+    	<ion-label stacked>
+    		<span class="medicao-form-input">Quantidade inserida de insulina</span>
+    		<ion-icon name="flash"></ion-icon>
+    </ion-label>
+    <ion-icon name="clock"></ion-icon>
+		<ion-input type="number" placeholder="Resultado..." [(ngModel)]="medicao.quantidade" required></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>
+			<span class="medicao-form-input">
+				<span class="medicao-form-input">Data</span>
+				<ion-icon name="calendar"></ion-icon>
+			</span>
+				</ion-label>
+			<ion-input type="date" [(ngModel)]="medicao.data" required></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>
+		    <span class="medicao-form-input">Turno</span>
+				<ion-icon name="clock"></ion-icon>
+			</ion-label>
+			<ion-select [(ngModel)]="medicao.turno" placeholder="Turno da medição" required>
+      	<ion-option value="1">Café</ion-option>
+      	<ion-option value="2">Almoço</ion-option>
+      	<ion-option value="3">Jantar / Noite</ion-option>
+   		</ion-select>
+		</ion-item>
+    <p>
+			<button ion-button full outline color="primary" icon-end (click)="adicionar()">
+        Adicionar registro
+        <ion-icon name="send"></ion-icon>
+      </button>
+	</div>
+</ion-content>

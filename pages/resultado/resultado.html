@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center><span class="titulo">Resultado</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let x of data" (click)="detalheItem(x)">
+        <b>{{ x.data | data }}</b>
+        <ion-note item-end>{{x.turno | turno}}  <span class="badge badge-primary badge-pill">
+          {{x.quantidade_insulina}} mg/dl</span></ion-note>
+      </ion-item>
+    <ion-item text-center>Quantidade de registros: <b>{{data.length}}</b></ion-item>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+</ion-content>
